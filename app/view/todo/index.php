@@ -14,7 +14,6 @@ $stmh = $pdo->query('SELECT * FROM firsttodo.todos');
 //すべてのカラムをfirsttodoデータベースのtodosテーブルから取得
 
 $todo_list = $stmh->fetchAll(PDO::FETCH_ASSOC);
-var_dump($todo_list);
 
 ?>
 
