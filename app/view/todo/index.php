@@ -1,20 +1,6 @@
 <?php
-
-const DSN = 'mysql:host=73e21cc45265;dbname=firsttodo;charset=utf8';
-//DSN：data source name(データベースに接続するために必要な情報)
-
-const USERNAME = 'miura';
-const PASSWORD = 'miura';
-
-$pdo = new PDO(DSN, USERNAME, PASSWORD);
-//PDO：PHP Database Object
-
-$stmh = $pdo->query('SELECT * FROM firsttodo.todos');
-//stmhはstatementの略
-//すべてのカラムをfirsttodoデータベースのtodosテーブルから取得
-
-$todo_list = $stmh->fetchAll(PDO::FETCH_ASSOC);
-
+require_once('../../config/database.php');
+require_once('../../model/Todo.php');
 ?>
 
 <!DOCTYPE html>
