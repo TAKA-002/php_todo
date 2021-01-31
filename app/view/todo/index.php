@@ -1,6 +1,9 @@
 <?php
-require_once('../../config/database.php');
 require_once('../../model/Todo.php');
+
+$todo = new Todo();
+$todo_list = $todo->findAll();
+
 ?>
 
 <!DOCTYPE html>

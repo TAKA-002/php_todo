@@ -7,6 +7,8 @@
 // ・pdoオブジェクトのquery文でデータベースへsql文で出力してほしい情報をリクエスト：戻り地はPDOStatementオブジェクトで返される
 // ・[PDOStatement]オブジェクトからfetchAllメソッドで連想配列の形式にしてmySqlからの情報を戻してもらう。
 
+require_once('../../config/database.php');
+
 class Todo
 {
   private $pdo;
@@ -17,18 +19,17 @@ class Todo
     return $this->pdo;
   }
 
-  public function findAll($pdo, $condition)
+  public static function findAll()
   {
+    //pdo
+    $TODO = new Todo();
+    $pdo = $TODO->setPdo(DSN, USERNAME, PASSWORD);
+
+    //sql
+    $condition = 'SELECT * FROM firsttodo.todos WHERE user_id = 1';
+
     $stmh = $pdo->query($condition);
     $todo_list = $stmh->fetchAll(PDO::FETCH_ASSOC);
     return $todo_list;
   }
 }
-
-//検索条件文
-$condition = 'SELECT * FROM firsttodo.todos WHERE user_id = 1';
-// $condition = 'SELECT * FROM firsttodo.todos';
-
-$todo = new Todo();
-$pdo = $todo->setPdo(DSN, USERNAME, PASSWORD);
-$todo_list = $todo->findAll($pdo, $condition);
