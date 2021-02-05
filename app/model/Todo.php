@@ -19,6 +19,7 @@ class Todo
     return $this->pdo;
   }
 
+  //インスタンス化して固有の特徴のあるものとする必要がない処理なので、staticでOK
   public static function findAll()
   {
     //pdo

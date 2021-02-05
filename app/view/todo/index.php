@@ -1,9 +1,10 @@
 <?php
 require_once('../../model/Todo.php');
+require_once('../../controller/TodoController.php');
 
 $todo = new Todo();
-$todo_list = $todo->findAll();
-
+$process = new TodoController();
+$todo_list = $process->index();
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +28,8 @@ $todo_list = $todo->findAll();
           </li>
         <?php endforeach; ?>
       </ul>
+
+
     <?php else : ?>
       <div>データなし</div>
     <?php endif; ?>
