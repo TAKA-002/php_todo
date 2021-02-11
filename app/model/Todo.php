@@ -33,4 +33,15 @@ class Todo
     $todo_list = $stmh->fetchAll(PDO::FETCH_ASSOC);
     return $todo_list;
   }
+
+  public static function findById($todo_id)
+  {
+    $all_todo = self::findAll();
+    foreach ($all_todo as $todo) {
+      if ($todo['id'] === $todo_id) {
+        $detail = $todo['details'];
+      }
+    }
+    return $detail;
+  }
 }
